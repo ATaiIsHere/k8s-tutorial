@@ -3,9 +3,11 @@ kind: Service
 metadata:
   name: web-server
 spec:
+  type: NodePort
   ports:
   - protocol: TCP
     port: 80
     targetPort: 80
+    nodePort: 8080
   selector:
     app: web-server
