@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue-whale
+spec:
+  replicas: 2
+  selector:
+      matchLabels:
+        app: blue-whale
+  template:
+    metadata:
+      labels:
+        app: blue-whale
+    spec:
+      containers:
+        - name: nginx
+          image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+          ports:
+            - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: purple-whale
+spec:
+  replicas: 2
+  selector:
+      matchLabels:
+        app: purple-whale
+  template:
+    metadata:
+      labels:
+        app: purple-whale
+    spec:
+      containers:
+        - name: nginx
+          image: gcr.io/heptio-images/ks-guestbook-demo:0.2
+          ports:
+            - containerPort: 3000
